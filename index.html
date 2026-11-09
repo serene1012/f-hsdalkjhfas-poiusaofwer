@@ -221,17 +221,56 @@ const R=String.raw;
  pkgs: ["pandas"] nếu bài cần gói ngoài. */
 const L=[
 {id:"c1",t:"Bắt đầu: kiểu dữ liệu & biến",theory:`
-<p>Python chạy từng dòng từ trên xuống. <code>print(...)</code> in ra màn hình, cách nhau bằng dấu phẩy thì in cách một khoảng.</p>
-<ul>
-<li><b>Số nguyên</b> <code>int</code>: <code>150_000_000</code> (dấu <code>_</code> chỉ để dễ đọc). Lũy thừa dùng <code>**</code>: <code>2 ** 10</code>. Python chịu được số cực lớn.</li>
-<li><b>Số thực</b> <code>float</code>: <code>0.1</code>, <code>1.2 + 2.3</code>.</li>
-<li><b>Chuỗi</b> <code>str</code>: trong <code>"..."</code> hoặc <code>'...'</code>. Cộng chuỗi là nối: <code>"TK" + "111"</code>; nhân chuỗi là lặp: <code>"=" * 40</code>. <code>\\n</code> xuống dòng, <code>\\t</code> tab. Chuỗi nhiều dòng dùng <code>"""..."""</code>.</li>
-<li><code>len(x)</code> đếm độ dài chuỗi, list…</li>
-<li><b>list</b> <code>[...]</code> sửa được; <b>tuple</b> <code>(...)</code> khai rồi là cố định; <b>dict</b> <code>{"ma": "KH01"}</code> cặp khóa–giá trị; <b>set</b> <code>{1, 2, 2}</code> tự bỏ trùng.</li>
-<li><code>True</code>/<code>False</code> là kiểu đúng/sai; <code>None</code> nghĩa là "không có gì".</li>
-</ul>
-<p><b>Biến</b> là cái tên gắn vào giá trị: <code>doanh_thu = 150_000_000</code>. Gán lại thì tên đó trỏ sang giá trị mới, kiểu gì cũng được.</p>
-<p><b>Bẫy hay gặp:</b> Python không cho cộng số với chuỗi: <code>5 + "2"</code> báo <code>TypeError</code>. Phải đổi kiểu trước: <code>int("2")</code> ra số, <code>str(5)</code> ra chuỗi. Mẹo đếm chữ số: <code>len(str(12345))</code> → 5.</p>`,
+<p>Python chạy code từ trên xuống dưới, mỗi lần một dòng. Hãy hình dung nó giống như đọc một tờ hóa đơn từ đầu đến cuối. Lệnh <code>print(...)</code> là cách đưa kết quả lên màn hình. Nhiều giá trị trong một lần <code>print</code> thì cách nhau bằng dấu phẩy, và Python tự thêm một khoảng trắng giữa chúng.</p>
+<pre><code>print("Doanh thu:", 150000000)
+print("Chi phí:", 90000000)</code></pre>
+<p><b>Kết quả in ra:</b></p>
+<pre>Doanh thu: 150000000
+Chi phí: 90000000</pre>
+
+<p>Số nguyên, tức là số không có phần thập phân, có kiểu <b>int</b> (viết tắt của integer). Ví dụ số tiền 150 triệu đồng. Số có phần thập phân có kiểu <b>float</b>, và phải dùng dấu chấm chứ không dùng dấu phẩy như trong sách kế toán. Dấu <code>_</code> trong số chỉ giúp mắt dễ đọc, Python bỏ qua nó. Phép lũy thừa viết bằng <code>**</code>.</p>
+<pre><code>print(0.5 + 0.25)
+print(2 ** 10)
+print(150_000_000)</code></pre>
+<p><b>Kết quả in ra:</b></p>
+<pre>0.75
+1024
+150000000</pre>
+
+<p>Chữ, tên khách hàng, mã tài khoản là kiểu <b>str</b> (viết tắt của string, nghĩa là chuỗi). Chuỗi viết trong cặp nháy kép <code>"..."</code> hoặc nháy đơn <code>'...'</code> đều được. Cộng hai chuỗi là nối chúng lại với nhau. Nhân một chuỗi với số nguyên là lặp chuỗi đó nhiều lần. Ký tự <code>\\n</code> là xuống dòng, <code>\\t</code> là một khoảng tab. Hàm <code>len(...)</code> đếm số ký tự của chuỗi.</p>
+<pre><code>ten = "Công ty An Phát"
+print("TK" + "111")
+print("=" * 10)
+print("Dòng 1\\nDòng 2")
+print(len(ten))</code></pre>
+<p><b>Kết quả in ra:</b></p>
+<pre>TK111
+==========
+Dòng 1
+Dòng 2
+15</pre>
+
+<p>Khi cần chứa nhiều giá trị, Python có bốn loại thường dùng. <b>list</b> viết trong <code>[...]</code> là danh sách có thể thêm, bớt, sửa. Vị trí trong list đếm từ 0, nên phần tử đầu tiên có vị trí 0. <b>tuple</b> viết trong <code>(...)</code> là bộ giá trị đã khai báo thì không sửa được nữa. <b>dict</b> viết trong <code>{"khóa": giá_trị}</code> là từ điển gồm cặp khóa và giá trị, giống bảng tra mã và tên. <b>set</b> viết trong <code>{...}</code> là tập hợp, tự bỏ các phần tử trùng.</p>
+<pre><code>cac_tk = ["111", "112", "131"]
+ngay_khoa_so = ("31/12", "2026")
+kh = {"ma": "KH01", "ten": "An Phát"}
+print(cac_tk[0], kh["ten"])
+print({1, 2, 2, 3})</code></pre>
+<p><b>Kết quả in ra:</b></p>
+<pre>111 An Phát
+{1, 2, 3}</pre>
+
+<p><b>Biến</b> là một cái tên dán lên giá trị, giống như nhãn dán lên hộp. Câu <code>doanh_thu = 150000000</code> nghĩa là từ đó, tên doanh_thu trỏ về số này. Gán lại tên đó cho giá trị khác thì nhãn chuyển sang hộp mới. Đây là ví dụ với biến và phép cộng:</p>
+<pre><code>doanh_thu = 150000000
+doanh_thu = doanh_thu + 5000000
+print(doanh_thu)</code></pre>
+<p><b>Kết quả in ra:</b></p>
+<pre>155000000</pre>
+
+<p><code>True</code> và <code>False</code> là giá trị đúng và sai, có kiểu <b>bool</b>. <code>None</code> nghĩa là chưa có gì cả, giống như một ô trống trong Excel.</p>
+
+<p><b>Lỗi hay gặp:</b> Python không tự đổi kiểu để cộng số với chữ. <code>5 + "2"</code> sẽ báo <code>TypeError</code>, nghĩa là sai kiểu. Muốn ra 7 thì đổi chữ thành số: <code>5 + int("2")</code>. Muốn ra chuỗi "52" thì đổi số thành chữ: <code>str(5) + "2"</code>. Số hóa đơn đọc từ file thường là chuỗi, nên phải đổi bằng <code>int()</code> trước khi tính toán.</p>
+`,
 tasks:[
 {id:"c1t1",k:"code",ask:"In ra 2 dòng: dòng 1 là <b>Báo cáo doanh thu quý 1</b>, dòng 2 là đúng <b>40 dấu =</b>. Dòng 2 bắt buộc dùng phép nhân chuỗi.",
 start:R`# In tiêu đề, rồi in 40 dấu =
@@ -285,18 +324,71 @@ diem[0] = 5`,o:["diem thành (5, 3)","diem thành (2, 5)","Báo lỗi TypeError"
 why:"Tuple khai rồi là cố định, không gán lại phần tử được. Cần sửa thì dùng list <code>[2, 3]</code>."}
 ]},
 {id:"c2",t:"Hàm: def, phạm vi biến, lambda",theory:`
-<p>Hàm gói một phép tính để gọi lại nhiều lần:</p>
+<p>Hàm là một khối lệnh có tên. Bạn viết công thức một lần rồi gọi lại nhiều lần, giống như công thức Excel kéo xuống nhiều ô. Trong ví dụ, <code>def</code> báo bắt đầu tạo hàm, <code>so_luong</code> và <code>don_gia</code> là <b>tham số</b> (chỗ trống để nhận số khi gọi), còn <code>return</code> trả kết quả ra ngoài. Thân hàm phải <b>thụt vào 4 dấu cách</b> sau dấu <code>:</code>.</p>
 <pre><code>def tien_hang(so_luong, don_gia):
-    return so_luong * don_gia</code></pre>
-<ul>
-<li>Thân hàm <b>thụt vào 4 dấu cách</b> sau dấu <code>:</code>. <code>return</code> trả kết quả ra ngoài; không có <code>return</code> thì hàm trả <code>None</code>.</li>
-<li>Hàm gọi được trong biểu thức và gọi lồng nhau: <code>tien_hang(2, 5) + tien_hang(1, 3)</code>, và hàm mới có thể dùng hàm cũ.</li>
-<li><b>Tham số mặc định</b>: <code>def tien_thue(tien, thue_suat=0.1)</code>; không truyền thì lấy 0.1. Gọi theo tên cũng được: <code>tien_thue(thue_suat=0.08, tien=500)</code>.</li>
-<li><b>Hàm cũng là giá trị</b>: gán được <code>f = tien_thue</code>, truyền được vào hàm khác.</li>
-<li><b>lambda</b> là hàm một dòng không tên: <code>cong_thue = lambda x: x * 1.1</code>.</li>
-<li><b>Method</b> là hàm gắn với đối tượng: <code>"kh01".upper()</code> → <code>"KH01"</code>; <code>.strip()</code> bỏ khoảng trắng hai đầu.</li>
-</ul>
-<p><b>Phạm vi biến:</b> biến gán bên trong hàm (kể cả tham số) là <b>cục bộ</b>, gán gì cũng không đụng biến cùng tên ở ngoài. Hàm <b>đọc</b> được biến toàn cục, nhưng muốn <b>sửa</b> thì phải khai <code>global ten_bien</code> ở đầu hàm, không thì dính <code>UnboundLocalError</code>.</p>`,
+    return so_luong * don_gia
+
+print(tien_hang(2, 5))
+print(tien_hang(2, 5) + tien_hang(1, 3))</code></pre>
+<p>Kết quả in ra:</p>
+<pre>10
+13</pre>
+<p>Hàm gọi được ngay trong phép tính, và gọi lồng nhau như dòng thứ hai. Lỗi hay gặp: quên <code>return</code>. Lúc đó hàm trả về <code>None</code>, nghĩa là "không có gì", giống một ô Excel trống.</p>
+<p><b>Tham số mặc định</b> là giá trị dự phòng. Nếu lúc gọi bạn không đưa số nào vào, Python lấy giá trị ghi sau dấu <code>=</code>. Ví dụ thuế GTGT 10% thì không phải nhập lại mỗi lần. Bạn cũng có thể gọi theo tên tham số để khỏi nhớ thứ tự.</p>
+<pre><code>def tien_thue(tien, thue_suat=0.1):
+    return tien * thue_suat
+
+print(tien_thue(1000000))
+print(tien_thue(500000, 0.08))
+print(tien_thue(thue_suat=0.08, tien=500))</code></pre>
+<p>Kết quả in ra:</p>
+<pre>100000.0
+40000.0
+40.0</pre>
+<p>Số có đuôi <code>.0</code> là số thực, Python dùng khi nhân với số lẻ như 0.1. Lỗi hay gặp: viết tham số có mặc định trước tham số không có mặc định, Python sẽ báo <code>SyntaxError</code>.</p>
+<p><b>Hàm cũng là một giá trị</b>, giống như số hay chữ. Bạn gán tên hàm cho biến, hoặc truyền nó vào hàm khác. Nếu hàm chỉ có một phép tính ngắn, bạn viết gọn bằng <b>lambda</b>: hàm một dòng không cần tên.</p>
+<pre><code>def tien_thue(tien, thue_suat=0.1):
+    return tien * thue_suat
+
+ham_tinh = tien_thue
+print(ham_tinh(200000))
+
+phi_ship = lambda so_tien: so_tien + 30000
+print(phi_ship(200000))</code></pre>
+<p>Kết quả in ra:</p>
+<pre>20000.0
+230000</pre>
+<p>Lỗi hay gặp: <code>tien_thue()</code> có ngoặc là gọi hàm và lấy kết quả, còn <code>tien_thue</code> không ngoặc là chính hàm đó.</p>
+<p><b>Method</b> là hàm gắn với một giá trị cụ thể, gọi bằng dấu chấm sau giá trị đó. Chữ có sẵn các method như <code>.upper()</code> đổi thành chữ hoa, và <code>.strip()</code> bỏ khoảng trắng hai đầu.</p>
+<pre><code>ma = "  kh01  "
+print(ma.strip())
+print(ma.strip().upper())</code></pre>
+<p>Kết quả in ra:</p>
+<pre>kh01
+KH01</pre>
+<p>Lỗi hay gặp: <code>ma.upper()</code> không tự đổi biến <code>ma</code>. Muốn đổi thì phải gán lại: <code>ma = ma.upper()</code>.</p>
+<p><b>Phạm vi biến</b> là vùng mà biến nhìn thấy được. Biến gán bên trong hàm, kể cả tham số, là <b>biến cục bộ</b>, chỉ tồn tại trong hàm đó. Gán trong hàm không làm thay đổi biến cùng tên ở ngoài.</p>
+<pre><code>x = 0
+def f():
+    x = 5
+    return x
+
+print(f())
+print(x)</code></pre>
+<p>Kết quả in ra:</p>
+<pre>5
+0</pre>
+<p>Hàm vẫn <b>đọc</b> được biến ở ngoài, ví dụ <code>gia_ban</code>. Nhưng nếu muốn <b>sửa</b> biến ở ngoài thì phải khai <code>global ten_bien</code> ở đầu hàm. Bỏ dòng <code>global</code> trong ví dụ dưới, Python sẽ báo <code>UnboundLocalError</code>, vì nó tưởng bạn đang tạo biến mới và dùng nó trước khi có giá trị.</p>
+<pre><code>tong = 0
+def cong_don(so):
+    global tong
+    tong = tong + so
+
+cong_don(50)
+print(tong)</code></pre>
+<p>Kết quả in ra:</p>
+<pre>50</pre>
+`,
 tasks:[
 {id:"c2t1",k:"code",ask:"Viết hàm <code>tien_thue(tien_hang, thue_suat=0.1)</code> trả về tiền thuế GTGT. Không truyền thuế suất thì mặc định 10%.",
 start:R`def tien_thue(tien_hang, thue_suat=0.1):
@@ -375,18 +467,45 @@ hint:"Chuẩn hóa cả hai: <code>.strip().upper()</code>, rồi so bằng <cod
 print(chenh_lech(y=2, x=5))`,o:["-3","3","Báo lỗi vì sai thứ tự","7"],a:1,why:"Gọi theo tên thì thứ tự không quan trọng: x=5, y=2 → 3."}
 ]},
 {id:"c3",t:"Điều kiện: so sánh, and/or, if/elif",theory:`
-<p>So sánh ra <code>True</code>/<code>False</code>: <code>==</code> bằng, <code>!=</code> khác, <code>&lt; &gt; &lt;= &gt;=</code>. Viết dây được: <code>0 &lt;= thue_suat &lt;= 0.1</code>. Chuỗi so theo thứ tự từ điển.</p>
-<ul>
-<li><code>a and b</code> đúng khi cả hai đúng; <code>a or b</code> đúng khi một trong hai đúng; <code>not a</code> đảo ngược.</li>
-<li><code>%</code> là chia lấy dư: <code>x % 2 == 0</code> nghĩa là số chẵn.</li>
-</ul>
-<pre><code>if so_ngay &lt;= 30:
+<p>Máy tính không biết "gần đúng" hay "hơi giống". Khi so sánh hai giá trị, nó chỉ trả lời đúng hoặc sai. Kết quả đúng/sai này có kiểu dữ liệu tên là <b>bool</b>, chỉ có hai giá trị <code>True</code> (đúng) và <code>False</code> (sai). Các phép so sánh gồm <code>==</code> (bằng), <code>!=</code> (khác), <code>&lt;</code> (nhỏ hơn), <code>&gt;</code> (lớn hơn), <code>&lt;=</code> (nhỏ hơn hoặc bằng) và <code>&gt;=</code> (lớn hơn hoặc bằng). Chữ cũng so được, theo thứ tự bảng chữ cái, nên <code>"a" &lt; "b"</code> là True.</p>
+<pre><code>so_du = 5000000
+print(so_du &gt;= 5000000)
+print(so_du == 0)</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>True
+False</code></pre>
+<p>Lỗi hay gặp là nhầm <code>=</code> với <code>==</code>. Một dấu <code>=</code> là gán giá trị vào biến, còn hai dấu <code>==</code> mới là so sánh.</p>
+<p>Python cho phép viết nối nhau kiểu toán học, ví dụ <code>0 &lt;= thue_suat &lt;= 0.1</code>. Nó đọc như câu "thuế suất nằm từ 0 đến 10%", và chỉ đúng khi cả hai vế đều đúng. Cách viết này gọn hơn việc tách thành hai điều kiện riêng.</p>
+<pre><code>thue_suat = 0.1
+print(0 &lt;= thue_suat &lt;= 0.1)</code></pre>
+<p>Kết quả in ra: <code>True</code></p>
+<p>Để ghép nhiều điều kiện, dùng ba từ khóa. <code>and</code> (và) chỉ đúng khi cả hai vế đúng, giống việc duyệt vay phải có cả việc làm lẫn sổ hộ khẩu. <code>or</code> (hoặc) đúng khi ít nhất một vế đúng. <code>not</code> (không) đảo ngược kết quả. Phép <code>%</code> là chia lấy dư: <code>5 % 2</code> cho 1 vì 5 chia 2 còn dư 1, nên <code>x % 2 == 0</code> nghĩa là x là số chẵn.</p>
+<pre><code>x = 5
+print(2 &lt; x &lt; 10 and x % 2 == 0)
+print(2 &lt; x &lt; 10 or x % 2 == 0)</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>False
+True</code></pre>
+<p>Vế <code>2 &lt; x &lt; 10</code> đúng, nhưng 5 là số lẻ nên vế sau sai. Với <code>and</code> thì kết quả là False, còn với <code>or</code> chỉ cần một vế đúng nên kết quả là True.</p>
+<p>Khi cần phân loại, dùng <code>if</code>, <code>elif</code> và <code>else</code>. Ví dụ phân loại khoản nợ theo số ngày quá hạn: kế toán thường dò bảng từ trên xuống, xem trước có dưới 30 ngày không, rồi tới 90 ngày, còn lại là khó đòi.</p>
+<pre><code>so_ngay = 45
+if so_ngay &lt;= 30:
     nhom = "Trong hạn"
 elif so_ngay &lt;= 90:
     nhom = "Quá hạn"
 else:
-    nhom = "Khó đòi"</code></pre>
-<p>Python xét từ trên xuống, gặp điều kiện đúng đầu tiên là chạy nhánh đó rồi <b>bỏ qua hết phần còn lại</b>. Nên xếp điều kiện hẹp trước, rộng sau. Nhánh nào cũng phải thụt lề đều nhau.</p>`,
+    nhom = "Khó đòi"
+print(nhom)</code></pre>
+<p>Kết quả in ra: <code>Quá hạn</code></p>
+<p>Python xét các điều kiện từ trên xuống. Gặp điều kiện đúng đầu tiên là nó chạy nhánh đó rồi <b>bỏ qua hết phần còn lại</b>. Vì vậy phải xếp điều kiện hẹp lên trước. Nếu đặt <code>so_ngay &lt;= 90</code> lên đầu, số 10 cũng sẽ rơi vào "Quá hạn" và không bao giờ tới nhánh "Trong hạn".</p>
+<pre><code>so_ngay = 10
+if so_ngay &lt;= 90:
+    nhom = "Quá hạn"
+elif so_ngay &lt;= 30:
+    nhom = "Trong hạn"
+print(nhom)</code></pre>
+<p>Kết quả in ra: <code>Quá hạn</code> (sai so với mong muốn, vì 10 ngày phải là "Trong hạn"). Mọi dòng trong cùng một nhánh cần thụt lề đều nhau, thường là 4 khoảng trắng. Thụt lề sai thì Python báo lỗi ngay.</p>
+`,
 tasks:[
 {id:"c3t1",k:"mcq",ask:"In ra gì?",code:R`x = 5
 print(2 < x < 10 and x % 2 == 0)`,o:["True","False","5","Báo lỗi"],a:1,why:"<code>2 &lt; 5 &lt; 10</code> đúng, nhưng 5 lẻ nên vế sau sai; <code>and</code> cần cả hai → False."},
@@ -462,22 +581,77 @@ hint:"Tính <code>ln = doanh_thu - chi_phi</code> rồi xét <code>&gt; 0</code>
 ]}
 ,
 {id:"c4",t:"List và vòng lặp for",theory:`
-<p>List giữ nhiều giá trị theo thứ tự, rất hợp để lưu doanh thu từng tháng hoặc các khoản trên sổ. Vị trí đầu tiên là chỉ số 0; chỉ số âm đếm từ cuối. Dùng <code>for</code> để đọc lần lượt, hoặc <code>sum(ds)</code> khi chỉ cần cộng.</p>
-<ul>
-<li>Đọc và sửa phần tử bằng chỉ số: <code>doanh_thu[0]</code> là tháng đầu, <code>doanh_thu[-1]</code> là tháng cuối; gán <code>doanh_thu[0] = 120</code>.</li>
-<li>Cắt lát có dạng <code>ds[dau:cuoi:buoc]</code>; điểm cuối không lấy: <code>ds[1:3]</code> lấy chỉ số 1 và 2, còn <code>ds[::-1]</code> đảo thứ tự.</li>
-<li><code>append(x)</code> thêm một giá trị ở cuối; <code>x in ds</code> kiểm tra đã có chưa; <code>len(ds)</code> đếm số phần tử.</li>
-<li><code>for tien in ds</code> lấy từng khoản; <code>range(1, 4)</code> sinh 1, 2, 3 vì điểm cuối cũng không lấy.</li>
-<li><code>zip(ma, tien)</code> ghép các phần tử cùng vị trí; <code>sorted(ds, key=len)</code> sắp theo độ dài tên.</li>
-</ul>
+<p>List giống một cột số trong Excel: mỗi ô có một vị trí riêng, và vị trí đầu tiên được đánh số 0. Ví dụ doanh thu ba tháng đầu năm được lưu thành một list. Bạn đọc ô đầu bằng <code>doanh_thu[0]</code>, ô cuối bằng <code>doanh_thu[-1]</code>. Số âm đếm ngược từ cuối lên, nên -1 luôn là phần tử cuối cùng.</p>
+<pre><code>doanh_thu = [120, 90, 150]
+print(doanh_thu[0])
+print(doanh_thu[-1])
+doanh_thu[0] = 130
+print(doanh_thu)</code></pre>
+<p>Kết quả in ra:</p>
+<pre>120
+150
+[130, 90, 150]</pre>
+<p>Ba việc hay làm nhất với list là thêm, đếm và kiểm tra. <code>append(x)</code> là lệnh viết sau dấu chấm, thêm x vào cuối list, giống như ghi thêm một dòng xuống cuối sổ. <code>len(ds)</code> đếm số khoản đang có. <code>x in ds</code> trả về True nếu x có trong list, và False nếu không có.</p>
+<pre><code>so_thu = [500, 1200]
+so_thu.append(800)
+print(len(so_thu))
+print(1200 in so_thu)
+print(so_thu)</code></pre>
+<p>Kết quả in ra:</p>
+<pre>3
+True
+[500, 1200, 800]</pre>
+<p><b>Bẫy hay gặp:</b> <code>append</code> chỉ sửa list tại chỗ và không trả về list mới (nó trả về None, nghĩa là không có gì). Vì vậy đừng viết <code>so_thu = so_thu.append(800)</code>, vì khi đó so_thu sẽ thành None.</p>
+<p>Vòng lặp <code>for</code> giống việc bạn cầm sổ và đọc từng dòng từ trên xuống. Với mỗi khoản trong list, Python chạy một lần phần lệnh nằm bên dưới và được thụt lề vào trong. Hàm <code>range(1, 4)</code> sinh dãy 1, 2, 3; điểm cuối 4 không được lấy.</p>
+<pre><code>doanh_thu = [120, 90, 150]
+tong = 0
+for tien in doanh_thu:
+    tong += tien
+print(tong)</code></pre>
+<p>Kết quả in ra:</p>
+<pre>360</pre>
+<p>Tổng lũy kế là tổng cộng dồn sau mỗi tháng, giống cột số dư trong sổ quỹ. Ta giữ một biến cộng dồn và thêm từng kết quả vào một list mới.</p>
 <pre><code>doanh_thu = [120, 90, 150]
 cong_don = 0
 luy_ke = []
 for tien in doanh_thu:
     cong_don += tien
     luy_ke.append(cong_don)
-print(luy_ke)  # [120, 210, 360]</code></pre>
-<p><b>Bẫy hay gặp:</b> <code>append</code> sửa list tại chỗ và trả về <code>None</code>, đừng viết <code>ds = ds.append(x)</code>. Với lát cắt, nhớ điểm cuối bị loại; <code>ds[:2]</code> chỉ gồm hai phần tử đầu.</p>`,tasks:[
+print(luy_ke)</code></pre>
+<p>Kết quả in ra:</p>
+<pre>[120, 210, 360]</pre>
+<p>Lát cắt (slice) lấy một đoạn liên tiếp của list, giống việc bôi đen vài ô trong Excel. Viết <code>ds[dau:cuoi]</code> thì Python lấy từ vị trí dau đến trước vị trí cuoi. Bỏ trống đầu hoặc cuối nghĩa là lấy từ đầu hoặc lấy đến hết. Viết <code>ds[::-1]</code> để đảo ngược thứ tự.</p>
+<pre><code>ds = [10, 20, 30, 40]
+print(ds[1:3])
+print(ds[:2])
+print(ds[::-1])</code></pre>
+<p>Kết quả in ra:</p>
+<pre>[20, 30]
+[10, 20]
+[40, 30, 20, 10]</pre>
+<p>Có thể kết hợp <code>range</code> có bước với lát cắt để chia list thành từng nhóm. Vòng lặp <code>range(0, 5, 2)</code> sinh 0, 2, 4, nên mỗi lần ta lấy hai phần tử liền nhau.</p>
+<pre><code>ds = [1, 2, 3, 4, 5]
+for i in range(0, len(ds), 2):
+    print(ds[i:i+2])</code></pre>
+<p>Kết quả in ra:</p>
+<pre>[1, 2]
+[3, 4]
+[5]</pre>
+<p><code>set</code> là tập hợp, chỉ nhớ mỗi giá trị một lần. Nhờ vậy nó rất tiện để kiểm tra mã khách hàng đã gặp hay chưa. Hàm <code>sorted(ds, key=len)</code> trả về list mới đã sắp xếp. Tham số <code>key</code> cho biết tiêu chí sắp xếp; ở đây <code>len</code> đếm số ký tự của mỗi tên.</p>
+<pre><code>ma = ["KH01", "KH02", "KH01"]
+da_gap = set()
+trung = []
+for x in ma:
+    if x in da_gap:
+        trung.append(x)
+    da_gap.add(x)
+print(trung)
+print(sorted(["Nguyen Van A", "An", "Binh"], key=len))</code></pre>
+<p>Kết quả in ra:</p>
+<pre>['KH01']
+['An', 'Binh', 'Nguyen Van A']</pre>
+<p><b>Bẫy hay gặp:</b> set không giữ thứ tự xuất hiện. Nếu cần giữ đúng thứ tự, hãy dùng list và kiểm tra bằng <code>in</code>.</p>
+`,tasks:[
 {id:"c4t1",k:"code",ask:"Viết hàm <code>tong_12_thang(ds)</code> nhận list doanh thu theo tháng và trả về tổng các khoản. Ví dụ <code>tong_12_thang([10, 20, 30])</code> → <code>60</code>.",start:R`def tong_12_thang(ds):
     pass`,test:R`assert "tong_12_thang" in globals(), "Chưa có hàm tong_12_thang."
 assert tong_12_thang([10]*12)==120, "Tổng 12 tháng sai."`,hint:"Dùng sum.",sol:R`def tong_12_thang(ds):
@@ -517,21 +691,41 @@ assert sap_do_dai(["Nguyen Van A","An"])==["An","Nguyen Van A"], "Sắp theo đ�
 {id:"c4t7",k:"mcq",ask:"In ra gì? Xét lát cắt của list doanh thu; nhớ rằng điểm cuối của lát cắt không được lấy.",code:R`ds = [10, 20, 30, 40]
 print(ds[1:3])`,o:["[20, 30]","[20, 30, 40]","[10, 20, 30]","Báo lỗi IndexError"],a:0,why:"Lát cắt <code>ds[1:3]</code> lấy chỉ số 1 và 2, dừng trước chỉ số 3 nên in <code>[20, 30]</code>."}]},
 {id:"c5",t:"Tuple, set và chuỗi",theory:`
-<p>Tuple, set và chuỗi giúp xử lý dữ liệu sổ sách theo từng cấu trúc. Tuple giữ thứ tự nhưng không sửa được sau khi tạo; set chỉ giữ giá trị duy nhất; chuỗi có các method để làm sạch và tách dữ liệu.</p>
-<ul>
-<li>Tuple dùng dấu phẩy để gom giá trị; tuple một phần tử phải có dấu phẩy: <code>(1,)</code>. Gán tách (unpacking) như <code>ma, tien = (\"111\", 500)</code>.</li>
-<li>Set loại phần tử trùng: <code>set([\"KH01\", \"KH01\"])</code> còn một mã. Thêm bằng <code>add</code>: <code>ma.add(\"KH02\")</code>.</li>
-<li>Chuỗi cũng có thể cắt lát: <code>ma[:2]</code> lấy hai ký tự đầu; <code>strip()</code> bỏ trắng ở hai đầu.</li>
-<li><code>split(\";\")</code> tách dòng thành trường; <code>\";\".join(ds)</code> nối các trường bằng dấu chấm phẩy.</li>
-<li>F-string chèn giá trị và định dạng số: <code>f\"{tien:,.0f}\"</code> hiển thị số tiền có dấu phẩy hàng nghìn.</li>
-</ul>
-<pre><code>dong = \"KH01; Nguyen Van A; 1500000\"
-ma, ten, tien = dong.split(\";\")
-ma = ma.strip()
-ten = ten.strip()
-tien = int(tien)
-print((ma, ten, tien))  # ('KH01', 'Nguyen Van A', 1500000)</code></pre>
-<p><b>Bẫy hay gặp:</b> <code>(1)</code> chỉ là số nguyên trong ngoặc; phải viết <code>(1,)</code> mới là tuple. Set không bảo đảm thứ tự, vì vậy nếu cần giữ thứ tự mã xuất hiện thì dùng list và kiểm tra <code>in</code>.</p>`,tasks:[
+<p>Tuple, set và chuỗi là ba cách giữ dữ liệu sổ sách. Bạn có thể hình dung tuple như một dòng đã chốt trong sổ, ghi xong thì không sửa. Set giống danh sách khách hàng mà mỗi mã chỉ ghi một lần. Chuỗi giống một ô chữ trong Excel, có sẵn công cụ để làm sạch và tách.</p>
+
+<p>Tuple gom nhiều giá trị lại trong ngoặc đơn, các giá trị ngăn nhau bằng dấu phẩy. Muốn lấy từng giá trị ra, ta gán tách (unpacking): mỗi tên biến nhận một phần tử theo đúng thứ tự.</p>
+<pre><code>dong = ("KH01", "Nguyen Van A", 1500000)
+ma, ten, tien = dong
+print(ma, tien)</code></pre>
+<p>Kết quả in ra:</p>
+<pre>KH01 1500000</pre>
+<p>Lưu ý: <code>(1)</code> chỉ là số 1 nằm trong ngoặc. Muốn có tuple một phần tử thì phải viết <code>(1,)</code>.</p>
+
+<p>Set (tập hợp) là nhóm không cho trùng. Thêm một mã bao nhiêu lần, mỗi mã vẫn chỉ có một. Dùng <code>set(...)</code> để đổi list thành set, và <code>add(...)</code> để thêm một phần tử.</p>
+<pre><code>ma = set(["KH01", "KH01", "KH02"])
+ma.add("KH03")
+print(len(ma))</code></pre>
+<p>Kết quả in ra:</p>
+<pre>3</pre>
+<p>Lưu ý: set không giữ thứ tự. Nếu cần biết mã nào xuất hiện trước thì nên dùng list.</p>
+
+<p>Chuỗi là dữ liệu chữ, đặt trong dấu nháy. Chuỗi có các method, tức là hàm gắn sẵn với chuỗi, gọi bằng dấu chấm. <code>strip()</code> bỏ khoảng trắng ở hai đầu. <code>split(";")</code> cắt chuỗi thành nhiều phần theo dấu ";" và trả về một list. <code>";".join(...)</code> làm việc ngược lại: nối các phần lại bằng dấu ";".</p>
+<pre><code>dong = "  KH01; Nguyen Van A; 1500000  "
+ma, ten, tien = dong.strip().split(";")
+print(ma.strip(), "|", ten.strip(), "|", tien.strip())
+print(";".join(["KH01", "KH02"]))</code></pre>
+<p>Kết quả in ra:</p>
+<pre>KH01 | Nguyen Van A | 1500000
+KH01;KH02</pre>
+<p>Lưu ý: <code>strip()</code> chỉ bỏ khoảng trắng ở hai đầu chuỗi, không bỏ khoảng trắng giữa các từ.</p>
+
+<p>F-string là chuỗi có chữ <code>f</code> đứng trước, dùng cặp ngoặc nhọn <code>{}</code> để chèn giá trị vào. Thêm <code>:,.0f</code> sau tên biến sẽ hiện dấu phẩy phân cách hàng nghìn, giống cách định dạng số trong Excel.</p>
+<pre><code>tien = 1500000
+print(f"Số dư: {tien:,.0f} đồng")</code></pre>
+<p>Kết quả in ra:</p>
+<pre>Số dư: 1,500,000 đồng</pre>
+<p>Lưu ý: kiểu định dạng <code>,.0f</code> chỉ dùng cho số. Dùng với chữ sẽ báo lỗi.</p>
+`,tasks:[
 {id:"c5t1",k:"code",ask:"Viết hàm <code>tach_dong(dong)</code> nhận một dòng gồm mã, tên, số dư ngăn bằng dấu chấm phẩy; trả tuple gồm mã, tên và số dư dạng số nguyên. Ví dụ <code>tach_dong(\"KH01;Nguyen Van A;1500000\")</code> → <code>(\"KH01\", \"Nguyen Van A\", 1500000)</code>.",start:R`def tach_dong(dong):
     pass`,test:R`assert "tach_dong" in globals(), "Chưa có hàm tach_dong."
 assert tach_dong("KH01;Nguyen Van A;1500000")==("KH01","Nguyen Van A",1500000), "Tách dòng sai."`,hint:"Split rồi unpack.",sol:R`def tach_dong(dong):
@@ -560,20 +754,55 @@ assert chuan_ma(" KH01,KH02, KH01")==["KH01","KH02"], "Chuẩn hóa mã sai."`,h
         if x and x not in k: k.append(x)
     return k`,why:"Strip làm sạch, membership giữ duy nhất."}]},
 {id:"c6",t:"Làm việc với file",theory:`
-<p>File giúp chương trình đọc bút toán đã lưu hoặc ghi báo cáo ra đĩa. Mở bằng <code>open</code>; nên dùng <code>with</code> để file được đóng tự động kể cả khi có lỗi. Chỉ định <code>encoding=\"utf-8\"</code> để đọc tiếng Việt ổn định.</p>
-<ul>
-<li>Chế độ <code>\"r\"</code> đọc file có sẵn; <code>\"w\"</code> tạo mới hoặc ghi đè; <code>\"a\"</code> ghi nối vào cuối.</li>
-<li><code>read()</code> trả toàn bộ nội dung dạng chuỗi; <code>readlines()</code> trả list các dòng, thường mỗi dòng còn ký tự xuống dòng.</li>
-<li><code>write(chuoi)</code> ghi chuỗi; <code>writelines(ds)</code> ghi từng chuỗi nhưng không tự thêm xuống dòng.</li>
-<li><code>len(noi_dung)</code> đếm ký tự; <code>noi_dung.split()</code> tách từ theo khoảng trắng; <code>lines[:n]</code> lấy n dòng đầu.</li>
-<li>Muốn trả dòng sạch, dùng <code>strip()</code>; để đảo thứ tự list có thể dùng <code>lines[::-1]</code>.</li>
-</ul>
-<pre><code>with open(\"doanh_thu.txt\", \"w\", encoding=\"utf-8\") as f:
-    f.write(\"120\\n90\\n150\\n\")
-with open(\"doanh_thu.txt\", encoding=\"utf-8\") as f:
-    doanh_thu = [int(dong) for dong in f.readlines()]
-print(sum(doanh_thu))  # 360</code></pre>
-<p><b>Bẫy hay gặp:</b> <code>w</code> xóa nội dung cũ trước khi ghi; dùng <code>a</code> nếu cần nối tiếp. <code>writelines</code> không tự chèn ký tự xuống dòng, còn <code>readlines()</code> thường giữ <code>\\n</code> ở cuối từng dòng.</p>`,tasks:[
+<p>Dữ liệu trong chương trình sẽ mất khi tắt chương trình, nên muốn giữ lại thì phải lưu ra file trên đĩa. Bạn có thể nghĩ file như một cuốn sổ kế toán bằng giấy: mở sổ ra, đọc hoặc ghi vào, rồi gấp lại. Trong Python, việc mở sổ dùng hàm <code>open</code>.</p>
+<p>Khối <code>with</code> sẽ tự đóng sổ khi xong việc, kể cả khi có lỗi giữa chừng. Phần <code>encoding="utf-8"</code> là tham số chỉ bảng mã, tức quy tắc để máy hiểu đúng chữ tiếng Việt. Bạn cứ ghi <code>utf-8</code> là an toàn.</p>
+<pre><code>with open("so_quy.txt", "w", encoding="utf-8") as f:
+    f.write("Thu tien mat: 5000000\\n")
+print("Da ghi xong")</code></pre>
+<p>Kết quả in ra:</p>
+<pre>Da ghi xong</pre>
+<p>Chữ thứ hai trong <code>open</code> là chế độ mở. <code>"r"</code> chỉ đọc. <code>"w"</code> xóa nội dung cũ rồi ghi từ đầu, giống như viết đè lên sổ. <code>"a"</code> ghi nối vào cuối, giống như thêm dòng mới vào sổ đã có số liệu.</p>
+<pre><code>with open("so_quy.txt", "w", encoding="utf-8") as f:
+    f.write("Dong 1\\n")
+with open("so_quy.txt", "a", encoding="utf-8") as f:
+    f.write("Dong 2\\n")
+with open("so_quy.txt", encoding="utf-8") as f:
+    print(f.read(), end="")</code></pre>
+<p>Kết quả in ra:</p>
+<pre>Dong 1
+Dong 2</pre>
+<p>Hàm <code>read()</code> đọc toàn bộ nội dung thành một <b>chuỗi</b>, tức là một đoạn chữ dài. Hàm <code>readlines()</code> thì trả về một <b>list</b>, tức danh sách các dòng nằm trong dấu <code>[ ]</code>, giống như bạn đọc từng dòng trong sổ. Mỗi dòng vẫn giữ ký tự xuống dòng <code>\\n</code> ở cuối.</p>
+<pre><code>with open("doanh_thu.txt", "w", encoding="utf-8") as f:
+    f.write("120\\n90\\n150\\n")
+with open("doanh_thu.txt", encoding="utf-8") as f:
+    dong = f.readlines()
+print(dong)</code></pre>
+<p>Kết quả in ra:</p>
+<pre>['120\\n', '90\\n', '150\\n']</pre>
+<p>Hàm <code>write</code> ghi một chuỗi vào file. Hàm <code>writelines</code> ghi cả list, nhưng <b>không tự thêm xuống dòng</b>. Nó giống việc in hàng loạt phiếu thu mà quên xuống dòng, nên các phiếu dính liền thành một khối.</p>
+<pre><code>with open("khach.txt", "w", encoding="utf-8") as f:
+    f.writelines(["KH01\\n", "KH02\\n"])
+with open("khach.txt", encoding="utf-8") as f:
+    print(f.read(), end="")</code></pre>
+<p>Kết quả in ra:</p>
+<pre>KH01
+KH02</pre>
+<p>Nếu viết <code>["KH01", "KH02"]</code> mà thiếu <code>\\n</code>, file sẽ thành <code>KH01KH02</code> trên một dòng.</p>
+<p>Hàm <code>split()</code> cắt chuỗi thành các từ theo khoảng trắng và trả về list. Hàm <code>len</code> đếm số phần tử của list hoặc số ký tự của chuỗi. Cú pháp <code>tu[::-1]</code> đọc list ngược từ cuối về đầu.</p>
+<pre><code>with open("doanh_thu.txt", encoding="utf-8") as f:
+    tu = f.read().split()
+print(tu)
+print(len(tu))
+print(tu[::-1])</code></pre>
+<p>Kết quả in ra:</p>
+<pre>['120', '90', '150']
+3
+['150', '90', '120']</pre>
+<p>Hàm <code>strip()</code> bỏ khoảng trắng và ký tự xuống dòng ở hai đầu chuỗi. Khi dùng <code>readlines()</code>, bạn nên gọi <code>strip()</code> để lấy dữ liệu sạch.</p>
+<pre><code>print("  111\\n".strip())</code></pre>
+<p>Kết quả in ra:</p>
+<pre>111</pre>
+`,tasks:[
 {id:"c6t1",k:"code",ask:"Viết hàm <code>doc_file(ten)</code> nhận tên đường dẫn và trả toàn bộ nội dung file dưới dạng chuỗi. Bài kiểm tra tạo file có nội dung <code>KH01</code>; ví dụ gọi <code>doc_file(\"fixture.txt\")</code> → <code>\"KH01\"</code>.",start:R`with open("fixture.txt","w",encoding="utf-8") as f: f.write("KH01")
 def doc_file(ten):
     pass`,test:R`with open("fixture.txt","w",encoding="utf-8") as f: f.write("KH01")
@@ -608,19 +837,37 @@ assert "dong_nguoc" in globals(), "Chưa có hàm dong_nguoc."
 assert dong_nguoc("fixture6.txt")==["131","111"], "Đảo dòng sai."`,hint:"Strip các dòng rồi đảo lát.",sol:R`def dong_nguoc(ten):
     with open(ten,encoding="utf-8") as f: return [x.strip() for x in f.readlines()][::-1]`,why:"Lát cắt bước âm đảo list."}]},
 {id:"c7",t:"List comprehension, map, filter, enumerate",theory:`
-<p>List comprehension tạo list mới gọn từ list bút toán. Cấu trúc là <code>[biểu_thức for phần_tử in dữ_liệu]</code>, có thể thêm điều kiện lọc ở cuối; dữ liệu gốc không bị sửa.</p>
-<ul>
-<li>Biến đổi từng phần tử: <code>[x * 1.1 for x in ds]</code> cộng thuế 10%.</li>
-<li>Lọc khoản dương: <code>[x for x in ds if x &gt; 0]</code>; điều kiện đặt sau <code>for</code>.</li>
-<li>Kết hợp lọc và tính: <code>[x * 1.1 for x in ds if x &gt; 0]</code>.</li>
-<li><code>map(f, ds)</code> áp dụng hàm lên từng phần tử; Python 3 trả iterator nên thường bọc bằng <code>list(...)</code>.</li>
-<li><code>enumerate(ds, start=1)</code> ghép số thứ tự; <code>zip(ma, tien)</code> ghép dữ liệu cùng vị trí.</li>
-</ul>
-<pre><code>but_toan = [{\"tk\": \"111\", \"so_tien\": 100},
-            {\"tk\": \"131\", \"so_tien\": 250}]
-so_tien = [b[\"so_tien\"] for b in but_toan if b[\"so_tien\"] &gt; 100]
-print(so_tien)  # [250]</code></pre>
-<p><b>Bẫy hay gặp:</b> <code>if</code> lọc đặt sau <code>for</code>; dạng <code>[x if dieu_kien for x in ds]</code> sai cú pháp. Muốn chọn giữa hai giá trị, dùng <code>a if dieu_kien else b</code> ở phần biểu thức.</p>`,tasks:[
+<p>List là một dãy giá trị được đánh số thứ tự, giống một cột số trong Excel. List comprehension là cách viết gọn để tạo một list mới từ list cũ, chỉ trong một dòng. Tên này nghĩa là "bao gồm" trong tiếng Anh, và bạn đọc nó gần như đọc câu tiếng Anh: lấy từng x trong danh sách rồi tính gì đó với x. Dữ liệu gốc vẫn giữ nguyên.</p>
+<pre><code>hoa_don = [120000, 450000, 80000]
+thue = [round(x * 1.1) for x in hoa_don]
+print(thue)</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>[132000, 495000, 88000]</code></pre>
+<p>Ở đây x là tên tạm, mỗi lần nhận một hóa đơn. Số 1.1 là số thực (float), tức số có phần thập phân. Hàm round() làm tròn kết quả về số nguyên gần nhất để con số gọn hơn.</p>
+<p>Muốn chỉ giữ một số phần tử, thêm if ở cuối. Cách này giống lệnh Filter trong Excel: chỉ những dòng thỏa điều kiện mới được đưa vào list mới. Trong ví dụ dưới, mỗi bút toán là một dict (từ điển), tức một cặp khóa và giá trị như tk và so_tien. Chỉ bút toán có số tiền lớn hơn 100 được giữ lại.</p>
+<pre><code>but_toan = [{"tk": "111", "so_tien": 100},
+            {"tk": "131", "so_tien": 250}]
+so_tien = [b["so_tien"] for b in but_toan if b["so_tien"] &gt; 100]
+print(so_tien)</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>[250]</code></pre>
+<p>map(hàm, dữ_liệu) áp dụng một hàm lên từng phần tử, giống kéo cùng một công thức xuống cả cột Excel. Hàm là một đoạn code có tên, nhận đầu vào và trả kết quả; từ khóa def dùng để tạo hàm. map trả về một iterator, tức đối tượng lấy phần tử từng cái một khi cần và chưa phải list. Vì vậy bạn bọc bằng list(...) để thấy kết quả.</p>
+<pre><code>def them_thue(x):
+    return round(x * 1.1)
+
+print(list(map(them_thue, hoa_don)))</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>[132000, 495000, 88000]</code></pre>
+<p>enumerate(ds, start=1) ghép số thứ tự vào từng phần tử, rất hợp để đánh số chứng từ. Vòng for ở dưới lần lượt lấy từng cặp (số thứ tự, mã), và mỗi cặp là một tuple (bộ giá trị), ví dụ (1, "HD01"). Hàm zip(ma, tien) làm việc tương tự nhưng ghép hai list cùng vị trí thành từng cặp.</p>
+<pre><code>chung_tu = ["HD01", "HD02", "HD03"]
+for stt, ma in enumerate(chung_tu, start=1):
+    print(stt, ma)</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>1 HD01
+2 HD02
+3 HD03</code></pre>
+<p><b>Bẫy hay gặp:</b> if lọc phải đặt sau for, nên [x if x &gt; 0 for x in ds] báo lỗi cú pháp. Muốn chọn giữa hai giá trị, viết a if dieu_kien else b ở phần biểu thức, ví dụ ["co" if x &gt; 0 else "khong" for x in ds]. Và nhớ bọc map bằng list(...), nếu không bạn chỉ thấy đối tượng map chứ không thấy số.</p>
+`,tasks:[
 {id:"c7t1",k:"code",ask:"Viết hàm <code>loc_hd(ds)</code> nhận list hóa đơn có khóa <code>tong</code>, trả list những hóa đơn trên 1.000.000. Ví dụ <code>loc_hd([{\"tong\": 100}, {\"tong\": 1200000}])</code> trả list chỉ chứa hóa đơn thứ hai.",start:R`def loc_hd(ds):
     pass`,test:R`assert "loc_hd" in globals(), "Chưa có hàm loc_hd."
 h=[{"tong":100},{"tong":1200000}]
@@ -645,20 +892,49 @@ print([x * 10 for x in ds if x % 2 == 0])`,o:["[20, 40]","[10, 20, 30, 40]","[20
 assert nhan_doi([2,3])==[4,6], "Map sai."`,hint:"Map lambda rồi list.",sol:R`def nhan_doi(ds):
     return list(map(lambda x:x*2,ds))`,why:"Map áp dụng hàm lên từng phần tử."}]},
 {id:"c8",t:"Dictionary",theory:`
-<p>Dictionary (dict) ánh xạ một khóa, như mã tài khoản, tới một giá trị như số dư. Khóa phải duy nhất; tra cứu bằng <code>d[ma]</code>, cập nhật bằng phép gán. Dùng <code>get</code> khi khóa có thể chưa tồn tại.</p>
-<ul>
-<li><code>d.get(k, mac_dinh)</code> trả giá trị đang có hoặc giá trị mặc định mà không thêm khóa: <code>so_du.get(\"111\", 0)</code>.</li>
-<li><code>d.setdefault(k, mac_dinh)</code> trả giá trị hiện có; nếu thiếu thì thêm khóa với mặc định. Ví dụ <code>d.setdefault(\"131\", [])</code> lấy hoặc tạo list để gom giao dịch.</li>
-<li><code>d[k] = v</code> thêm/cập nhật; <code>del d[k]</code> xóa khóa. <code>keys()</code>, <code>values()</code>, <code>items()</code> cho khóa, giá trị, hoặc cặp.</li>
-<li>Lặp cặp bằng <code>for ma, tien in d.items()</code>; đếm số lần bằng cách cập nhật <code>d[ma] = d.get(ma, 0) + 1</code>.</li>
-<li><code>sorted(d.items(), key=lambda cap: cap[1], reverse=True)</code> sắp theo giá trị giảm dần.</li>
-</ul>
-<pre><code>but_toan = [(\"111\", 100), (\"131\", 250), (\"111\", 50)]
+<p>Hãy nghĩ tới sổ cái kế toán: bạn tra mã tài khoản <b>111</b> để biết số dư tiền mặt. Trong Python, cấu trúc này gọi là <b>dictionary</b>, viết tắt <code>dict</code>. Mỗi dòng gồm một <b>khóa</b> (mã tài khoản) và một <b>giá trị</b> (số dư). Khóa thường là chữ hoặc số, và không được trùng nhau.</p>
+<p>Tạo dict bằng cặp ngoặc nhọn <code>{}</code>, mỗi cặp viết theo dạng <code>khóa: giá trị</code>. Muốn lấy số dư thì viết <code>so_du[khóa]</code>. Nếu khóa đó chưa có, Python báo lỗi, nên đừng tra khóa mà bạn không chắc đã tồn tại.</p>
+<pre><code>so_du = {"111": 500, "131": 250}
+print(so_du["111"])
+so_du["112"] = 1000
+print(so_du)</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>500
+{'111': 500, '131': 250, '112': 1000}</code></pre>
+<p>Khi chưa chắc khóa có sẵn, dùng <code>so_du.get(khóa, mặc_định)</code>. Hàm này chỉ đọc: có khóa thì trả giá trị, không có thì trả mặc định. Nó không thêm khóa vào dict. Tương tự như khi bạn hỏi sổ cái "tài khoản này có số dư không, nếu không thì coi như 0".</p>
+<pre><code>so_du = {"111": 500}
+print(so_du.get("111", 0))
+print(so_du.get("131", 0))
+print(so_du)</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>500
+0
+{'111': 500}</code></pre>
+<p>Muốn cộng dồn theo mã, ví dụ tổng tiền theo tài khoản, bạn lặp qua từng dòng. Vòng <code>for</code> lấy từng phần tử rồi tách sẵn thành hai biến. Mỗi phần tử ở đây là một <b>tuple</b>, tức một nhóm giá trị đặt trong ngoặc tròn, sau khi tạo thì không sửa được. Lỗi hay gặp là viết <code>so_du[ma] + tien</code> mà quên <code>get</code>, khiến lần đầu gặp mã mới sẽ báo KeyError.</p>
+<pre><code>but_toan = [("111", 100), ("131", 250), ("111", 50)]
 so_du = {}
 for ma, tien in but_toan:
     so_du[ma] = so_du.get(ma, 0) + tien
-print(so_du)  # {'111': 150, '131': 250}</code></pre>
-<p><b>Bẫy hay gặp:</b> <code>get</code> chỉ đọc và trả mặc định, không tạo khóa. <code>setdefault</code> có tác dụng phụ là thêm khóa khi thiếu; nếu mặc định là lời gọi hàm như <code>setdefault(k, tao_list())</code>, lời gọi vẫn chạy trước cả khi biết khóa đã có.</p>`,tasks:[
+print(so_du)</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>{'111': 150, '131': 250}</code></pre>
+<p>Khi mỗi khóa cần giữ một danh sách, như danh sách hóa đơn của từng khách, dùng <code>setdefault(khóa, mặc_định)</code>. Nó hoạt động như <code>get</code>, nhưng nếu khóa thiếu thì nó thêm khóa đó với giá trị mặc định. Cần lưu ý đối số mặc định luôn được tính trước, kể cả khi khóa đã có.</p>
+<pre><code>hoa_don = [("KH01", "HD1"), ("KH02", "HD2"), ("KH01", "HD3")]
+gom = {}
+for ma, so_hd in hoa_don:
+    gom.setdefault(ma, []).append(so_hd)
+print(gom)</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>{'KH01': ['HD1', 'HD3'], 'KH02': ['HD2']}</code></pre>
+<p>Để duyệt cả dict, dùng <code>items()</code> để lấy từng cặp khóa và giá trị. Muốn sắp theo số tiền giảm dần, truyền cho <code>sorted</code> một <b>lambda</b>, tức là một hàm ngắn không cần đặt tên. Biểu thức <code>lambda cap: cap[1]</code> nghĩa là "lấy phần tử thứ hai của cặp, chính là số tiền". Đối số <code>reverse=True</code> đảo sang giảm dần.</p>
+<pre><code>so_du = {"111": 150, "131": 250, "112": 40}
+for ma, tien in sorted(so_du.items(), key=lambda cap: cap[1], reverse=True):
+    print(ma, tien)</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>131 250
+111 150
+112 40</code></pre>
+`,tasks:[
 {id:"c8t1",k:"code",ask:"Mỗi bút toán là dict <code>{\"tk\": ..., \"so_tien\": ...}</code>. Viết <code>tong_tk(ds)</code> trả dict tổng tiền theo tài khoản. Ví dụ <code>tong_tk([{\"tk\": \"111\", \"so_tien\": 10}, {\"tk\": \"111\", \"so_tien\": 5}])</code> → <code>{\"111\": 15}</code>.",start:R`def tong_tk(ds):
     pass`,test:R`assert "tong_tk" in globals(), "Chưa có hàm tong_tk."
 d=[{"tk":"111","so_tien":10},{"tk":"111","so_tien":5}]
@@ -696,20 +972,47 @@ assert tong_no([("KH01",10),("KH01",5)])=={"KH01":15}, "Tổng nợ sai."`,hint:
     for ma,tien in ds: d[ma]=d.get(ma,0)+tien
     return d`,why:"Gộp các khoản theo mã."}]},
 {id:"c9",t:"Module: os, re, json",theory:`
-<p>Module <code>os</code> hỗ trợ thao tác đường dẫn, <code>re</code> tìm mẫu văn bản bằng biểu thức chính quy, còn <code>json</code> chuyển dữ liệu Python sang JSON và ngược lại. Import module trước khi gọi hàm của nó.</p>
-<ul>
-<li><code>os.path.splitext(ten)</code> tách tên và phần mở rộng; ví dụ <code>os.path.splitext(\"bao_cao.csv\")[1]</code> là <code>\".csv\"</code>.</li>
-<li><code>os.path.join(thu_muc, ten)</code> ghép đường dẫn; <code>os.makedirs(thu_muc, exist_ok=True)</code> tạo thư mục nếu cần.</li>
-<li><code>re.findall(mau, s)</code> trả đoạn khớp; <code>re.sub(mau, thay, s)</code> thay đoạn; <code>re.fullmatch</code> yêu cầu toàn chuỗi khớp.</li>
-<li>Mẫu <code>r\"\\d+\"</code> tìm cụm chữ số; <code>r\"(?:03|05|07|08|09)\\d{8}\"</code> khớp số điện thoại 10 số với đầu số này.</li>
-<li><code>json.dumps(d)</code> tạo chuỗi JSON; <code>json.loads(s)</code> phân tích chuỗi thành dữ liệu Python.</li>
-</ul>
+<p>Python có sẵn nhiều <b>module</b>, tức là bộ công cụ đóng gói sẵn cho một việc cụ thể. Muốn dùng phải khai báo bằng <code>import</code> trước. Chương này dùng ba module: <code>os</code> để làm việc với file và thư mục, <code>re</code> để tìm chuỗi theo mẫu, và <code>json</code> để đổi dữ liệu sang dạng văn bản JSON.</p>
+<p><b>Tách đuôi file và ghép đường dẫn.</b> Đuôi file là phần sau dấu chấm cuối cùng, ví dụ <code>.csv</code>. Hàm <code>os.path.splitext(ten)</code> tách tên file thành hai phần: phần tên và phần đuôi. Hàm <code>os.path.join</code> ghép tên thư mục với tên file, còn <code>os.makedirs(thu_muc, exist_ok=True)</code> tạo thư mục nếu chưa có, và không báo lỗi nếu thư mục đã tồn tại.</p>
+<pre><code>import os
+os.makedirs(\"so_sach\", exist_ok=True)
+print(os.path.splitext(\"bao_cao.csv\")[1])
+print(os.path.join(\"so_sach\", \"so_cai_111.csv\"))</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>.csv
+so_sach/so_cai_111.csv</code></pre>
+<p>Trên Windows, dấu phân cách là dấu \\ nên đường dẫn hiện là <code>so_sach\\so_cai_111.csv</code>.</p>
+<p><b>Tìm mẫu bằng biểu thức chính quy.</b> Biểu thức chính quy (regex) là một mẫu mô tả hình dạng chuỗi cần tìm, ví dụ "dãy chữ số". Trong mẫu, <code>\\d</code> nghĩa là một chữ số và <code>\\d+</code> nghĩa là một hoặc nhiều chữ số liền nhau. Hàm <code>re.findall(mau, s)</code> trả về danh sách mọi đoạn khớp mẫu.</p>
+<pre><code>import re
+ghi_chu = \"HD01 thu 1500000, phi 20000\"
+print(re.findall(r\"\\d+\", ghi_chu))</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>['01', '1500000', '20000']</code></pre>
+<p>Bẫy hay gặp: kết quả của <code>findall</code> là chuỗi, không phải số. Muốn cộng tiền thì phải đổi bằng <code>int()</code> trước.</p>
+<p><b>Kiểm tra toàn chuỗi với fullmatch.</b> <code>re.fullmatch(mau, s)</code> chỉ nhận khi cả chuỗi khớp mẫu. Ví dụ số điện thoại Việt Nam hợp lệ là 10 chữ số, bắt đầu bằng 03, 05, 07, 08 hoặc 09. Trong mẫu, <code>(?:03|05|07|08|09)</code> là một nhóm các lựa chọn, còn <code>\\d{8}</code> nghĩa là đúng 8 chữ số.</p>
+<pre><code>import re
+mau = r\"(?:03|05|07|08|09)\\d{8}\"
+print(re.fullmatch(mau, \"0912345678\") is not None)
+print(re.fullmatch(mau, \"0412345678\") is not None)</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>True
+False</code></pre>
+<p><b>Thay đoạn khớp với sub.</b> <code>re.sub(mau, thay, s)</code> thay mọi đoạn khớp mẫu bằng chuỗi mới. Mẫu <code>\\s+</code> nghĩa là một hoặc nhiều ký tự trắng (dấu cách, tab) liền nhau. Ví dụ mã khách hàng bị gõ thừa dấu cách sẽ được gom về một dấu cách.</p>
+<pre><code>import re
+print(re.sub(r\"\\s+\", \" \", \"KH01   Nguyen   A\").strip())</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>KH01 Nguyen A</code></pre>
+<p><b>Đổi dữ liệu sang JSON.</b> JSON là dạng văn bản chuẩn để các phần mềm trao đổi dữ liệu. Trông nó giống dict Python, nhưng khóa và chuỗi luôn dùng nháy kép. <code>json.dumps(d)</code> đổi dict thành chuỗi JSON, còn <code>json.loads(s)</code> đổi ngược lại. Thêm <code>ensure_ascii=False</code> để giữ nguyên chữ tiếng Việt thay vì mã hóa thành dạng \\uXXXX.</p>
 <pre><code>import json
-but_toan = {\"ma\": \"HD01\", \"so_tien\": 1500000}
-chuoi = json.dumps(but_toan, ensure_ascii=False)
-doc_lai = json.loads(chuoi)
-print(doc_lai[\"so_tien\"])  # 1500000</code></pre>
-<p><b>Bẫy hay gặp:</b> <code>findall(r\"\\d+\", ...)</code> trả cụm số dạng chuỗi, không phải số nguyên. <code>fullmatch</code> kiểm tra toàn chuỗi, còn <code>search</code> chỉ cần thấy một đoạn khớp.</p>`,tasks:[
+hoa_don = {\"ma\": \"HD01\", \"so_tien\": 1500000}
+chuoi = json.dumps(hoa_don, ensure_ascii=False)
+print(chuoi)
+print(json.loads(chuoi)[\"so_tien\"])</code></pre>
+<p>Kết quả in ra:</p>
+<pre><code>{"ma": "HD01", "so_tien": 1500000}
+1500000</code></pre>
+<p><b>Lỗi hay gặp:</b> quên dòng <code>import</code> sẽ gây lỗi <code>NameError: name 'os' is not defined</code>. Khi thấy lỗi này, hãy kiểm tra lại dòng import đầu file.</p>
+`,tasks:[
 {id:"c9t1",k:"code",ask:"Viết <code>duoi_file(ten)</code> dùng <code>os.path.splitext</code> trả phần đuôi file (có dấu chấm). Ví dụ <code>duoi_file(\"hoa_don.csv\")</code> → <code>\".csv\"</code>.",start:R`import os
 def duoi_file(ten):
     pass`,test:R`assert "duoi_file" in globals(), "Chưa có hàm duoi_file."
@@ -745,25 +1048,71 @@ def vong_json(d):
 assert vong_json({"ma":"KH01"})=={"ma":"KH01"}, "Vòng JSON sai."`,hint:"Lồng json.loads(json.dumps(...)).",sol:R`import json
 def vong_json(d): return json.loads(json.dumps(d,ensure_ascii=False))`,why:"Dumps mã hóa, loads giải mã."}]},
 {id:"c10",t:"Lập trình hướng đối tượng và ngoại lệ",theory:`
-<p>Lớp gom dữ liệu và hành vi liên quan thành một kiểu đối tượng; ví dụ mỗi hóa đơn giữ số lượng, đơn giá và thuế suất, rồi tự tính tổng. Khi gọi <code>HoaDon(...)</code>, Python tạo đối tượng và chạy <code>__init__</code>.</p>
-<ul>
-<li>Tham số đầu của method thường là <code>self</code>, tham chiếu tới đối tượng hiện tại. Gán <code>self.so_du = so_du</code> lưu thuộc tính vào đối tượng.</li>
-<li>Method định nghĩa phép làm với dữ liệu: <code>def tong(self): return self.tien_hang * (1 + self.vat)</code>.</li>
-<li>Kế thừa tạo lớp chuyên biệt từ lớp cha; <code>super().__init__(so_du)</code> gọi phần khởi tạo của cha.</li>
-<li><code>__str__</code> quyết định chuỗi hiển thị của đối tượng; <code>__add__</code> định nghĩa hành vi phép cộng như <code>a + b</code>.</li>
-<li><code>raise ValueError(\"...\")</code> báo dữ liệu không hợp lệ; <code>try/except ValueError</code> bắt lỗi đó để xử lý.</li>
-</ul>
+<p>Lớp (class) giống một mẫu biểu mẫu có sẵn các ô: số lượng, đơn giá, thuế suất. Mỗi hóa đơn cụ thể là một <b>đối tượng</b> (object) được tạo ra từ mẫu đó. Khi viết <code>HoaDon(2, 100, 0.1)</code>, Python tạo một đối tượng mới, rồi tự chạy hàm <code>__init__</code> để điền dữ liệu vào các ô.</p>
 <pre><code>class HoaDon:
     def __init__(self, so_luong, don_gia, vat):
-        if so_luong &lt; 0 or don_gia &lt; 0:
-            raise ValueError(\"Số liệu âm\")
-        self.tien_hang = so_luong * don_gia
+        self.so_luong = so_luong
+        self.don_gia = don_gia
+        self.vat = vat
+hd = HoaDon(2, 100, 0.1)
+print(hd.so_luong)</code></pre>
+<p><b>Kết quả in ra:</b></p>
+<pre><code>2</code></pre>
+<p>Tham số <code>self</code> là chính đối tượng đang được nói tới, giống cách bạn viết "ô này" trên sổ. Hàm gắn với đối tượng được gọi là <b>method</b>. Muốn đọc số liệu của hóa đơn bên trong method, bạn phải viết qua <code>self</code>, ví dụ <code>self.vat</code>. Lỗi hay gặp là quên <code>self.</code>, Python sẽ báo <code>NameError</code> vì không tìm thấy tên biến.</p>
+<pre><code>class HoaDon:
+    def __init__(self, so_luong, don_gia, vat):
+        self.so_luong = so_luong
+        self.don_gia = don_gia
         self.vat = vat
     def tong(self):
-        return self.tien_hang * (1 + self.vat)
+        return self.so_luong * self.don_gia * (1 + self.vat)
 hd = HoaDon(2, 100, 0.1)
-print(hd.tong())  # 220.00000000000003</code></pre>
-<p><b>Bẫy hay gặp:</b> Trong method phải đọc thuộc tính qua <code>self</code>; quên <code>self.</code> thường gây <code>NameError</code>. Hãy kiểm tra điều kiện trước khi cập nhật trạng thái để đối tượng không bị đổi dở dang khi ném ngoại lệ.</p>`,tasks:[
+print(round(hd.tong(), 2))</code></pre>
+<p><b>Kết quả in ra:</b></p>
+<pre><code>220.0</code></pre>
+<p>Hai hàm đặc biệt quyết định cách đối tượng hiện ra khi in và khi cộng. <code>__str__</code> chọn chữ hiển thị khi bạn in đối tượng. <code>__add__</code> cho biết phép <code>a + b</code> cần làm gì với hai đối tượng. Ví dụ hai số tiền 100000 và 50000 cộng lại thành một số tiền mới.</p>
+<pre><code>class SoTien:
+    def __init__(self, gia_tri):
+        self.gia_tri = gia_tri
+    def __str__(self):
+        return str(self.gia_tri) + " đồng"
+    def __add__(self, khac):
+        return SoTien(self.gia_tri + khac.gia_tri)
+a = SoTien(100000)
+b = SoTien(50000)
+print(a + b)</code></pre>
+<p><b>Kết quả in ra:</b></p>
+<pre><code>150000 đồng</code></pre>
+<p>Hóa đơn sai, chẳng hạn số tiền âm, không nên được ghi nhận. Lệnh <code>raise</code> báo lỗi, giống kế toán từ chối một chứng từ sai. <code>ValueError</code> là loại lỗi dành cho giá trị không hợp lệ. Hãy kiểm tra điều kiện trước khi đổi số dư, vì nếu kiểm tra sau khi đã trừ tiền thì số dư đã bị sai. Khối <code>try/except</code> bắt lỗi đó để chương trình không dừng đột ngột.</p>
+<pre><code>class CongNo:
+    def __init__(self):
+        self.so_du = 500
+    def tra_no(self, tien):
+        if tien &gt; self.so_du:
+            raise ValueError("Trả quá số nợ")
+        self.so_du -= tien
+c = CongNo()
+try:
+    c.tra_no(600)
+except ValueError as loi:
+    print("Lỗi:", loi)
+print(c.so_du)</code></pre>
+<p><b>Kết quả in ra:</b></p>
+<pre><code>Lỗi: Trả quá số nợ
+500</code></pre>
+<p><b>Kế thừa</b> nghĩa là lớp con lấy lại mọi thứ của lớp cha rồi thêm phần riêng. Ví dụ tài khoản tối thiểu là một tài khoản thường có thêm mức sàn. <code>super()</code> trỏ về lớp cha, nên <code>super().__init__(so_du)</code> nhờ lớp cha điền số dư, còn lớp con tự điền phần mức sàn.</p>
+<pre><code>class TaiKhoan:
+    def __init__(self, so_du):
+        self.so_du = so_du
+class TaiKhoanToiThieu(TaiKhoan):
+    def __init__(self, so_du, san):
+        super().__init__(so_du)
+        self.san = san
+tk = TaiKhoanToiThieu(500, 100)
+print(tk.so_du, tk.san)</code></pre>
+<p><b>Kết quả in ra:</b></p>
+<pre><code>500 100</code></pre>
+`,tasks:[
 {id:"c10t1",k:"code",ask:"Tạo lớp <code>HoaDon</code> nhận <code>so_luong</code>, <code>don_gia</code> và <code>vat</code>; method <code>tong()</code> trả tiền hàng cộng thuế. Ném <code>ValueError</code> nếu số lượng/giá âm hoặc VAT ngoài 0..0.1. Ví dụ <code>HoaDon(2, 100, 0.1).tong()</code> → <code>220</code>.",start:R`class HoaDon:
     def __init__(self,so_luong,don_gia,vat): pass
     def tong(self): pass`,test:R`assert "HoaDon" in globals(), "Chưa có lớp HoaDon."
